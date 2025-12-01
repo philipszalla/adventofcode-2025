@@ -135,3 +135,6 @@ Cargo.lock
 # Added by cargo
 
 /target
+
+# adventofcode-2025
+*.txt
