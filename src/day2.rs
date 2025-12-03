@@ -95,5 +95,6 @@ fn sub_int(num: &i64, len: i32, index: i32) -> i64 {
         return moved_num;
     }
 
-    moved_num - moved_num / 10i64.pow(len as u32) * 10i64.pow(len as u32)
+    // moved_num - moved_num / 10i64.pow(len as u32) * 10i64.pow(len as u32)
+    moved_num % 10i64.pow(len as u32)
 }
