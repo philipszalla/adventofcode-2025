@@ -4,6 +4,7 @@ use std::time::Instant;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 fn main() {
     println!("Hello, world!");
@@ -60,5 +61,21 @@ fn main() {
     let end = Instant::now();
 
     println!("Day3.1 Result: {}", res);
+    println!("Time: {:?}", end.duration_since(start));
+
+    let puzzle = fs::read_to_string("day4.txt").unwrap();
+
+    let start = Instant::now();
+    let res = day4::part1(&puzzle);
+    let end = Instant::now();
+
+    println!("Day4 Result: {}", res);
+    println!("Time: {:?}", end.duration_since(start));
+
+    let start = Instant::now();
+    let res = day4::part2(&puzzle);
+    let end = Instant::now();
+
+    println!("Day4.1 Result: {}", res);
     println!("Time: {:?}", end.duration_since(start));
 }
