@@ -1,5 +1,5 @@
-pub fn day1(puzzle: String) -> i32 {
-    let mut sum = 0;
+pub fn part1(puzzle: &str) -> u64 {
+    let mut sum = 0u64;
     let mut pos = 50;
 
     for line in puzzle.lines() {
@@ -26,8 +26,8 @@ pub fn day1(puzzle: String) -> i32 {
     sum
 }
 
-pub fn day1_1(puzzle: String) -> i32 {
-    let mut sum = 0;
+pub fn part2(puzzle: &str) -> u64 {
+    let mut sum = 0u64;
     let mut pos = 50;
 
     for line in puzzle.lines() {
@@ -39,7 +39,7 @@ pub fn day1_1(puzzle: String) -> i32 {
             dir = -1;
         }
 
-        sum += delta / 100;
+        sum += (delta / 100) as u64;
 
         let mut over = false;
         let start_at_0 = pos == 0;

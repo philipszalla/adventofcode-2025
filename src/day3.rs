@@ -1,5 +1,5 @@
-pub fn part1(puzzle: String) -> i32 {
-    let mut sum = 0;
+pub fn part1(puzzle: &str) -> u64 {
+    let mut sum = 0u64;
 
     for line in puzzle.lines() {
         let mut first_char = '0';
@@ -20,7 +20,7 @@ pub fn part1(puzzle: String) -> i32 {
             }
         }
 
-        let mut joltage = (first_char as i32 - '0' as i32) * 10;
+        let mut joltage = (first_char as u64 - '0' as u64) * 10;
 
         let mut last_char = '0';
         for (i, c) in line.chars().enumerate() {
@@ -38,8 +38,7 @@ pub fn part1(puzzle: String) -> i32 {
             }
         }
 
-        joltage += last_char as i32 - '0' as i32;
-        // println!("{}: {}", line, joltage);
+        joltage += last_char as u64 - '0' as u64;
 
         sum += joltage;
     }
@@ -47,7 +46,7 @@ pub fn part1(puzzle: String) -> i32 {
     sum
 }
 
-pub fn part2(puzzle: String) -> u64 {
+pub fn part2(puzzle: &str) -> u64 {
     let mut sum = 0;
 
     for line in puzzle.lines() {

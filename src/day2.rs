@@ -1,7 +1,15 @@
-pub fn day2(puzzle: String, part2: bool) -> i64 {
-    let mut sum = 0;
+pub fn part1(puzzle: &str) -> u64 {
+    solve(puzzle, false)
+}
 
-    let mut invalid_fn: fn(i64) -> bool = invalid_id;
+pub fn part2(puzzle: &str) -> u64 {
+    solve(puzzle, true)
+}
+
+fn solve(puzzle: &str, part2: bool) -> u64 {
+    let mut sum = 0u64;
+
+    let mut invalid_fn: fn(u64) -> bool = invalid_id;
     if part2 {
         invalid_fn = invalid_id_part2;
     }
@@ -9,8 +17,8 @@ pub fn day2(puzzle: String, part2: bool) -> i64 {
     let ranges = puzzle.split(",");
     for range in ranges {
         let parts = range.split("-");
-        let start = parts.clone().nth(0).unwrap().parse::<i64>().unwrap();
-        let end = parts.clone().nth(1).unwrap().parse::<i64>().unwrap();
+        let start = parts.clone().nth(0).unwrap().parse::<u64>().unwrap();
+        let end = parts.clone().nth(1).unwrap().parse::<u64>().unwrap();
 
         for num in start..=end {
             if invalid_fn(num) {
@@ -22,7 +30,7 @@ pub fn day2(puzzle: String, part2: bool) -> i64 {
     sum
 }
 
-fn invalid_id(num: i64) -> bool {
+fn invalid_id(num: u64) -> bool {
     let len = num_len(&num);
 
     if len % 2 != 0 {
@@ -42,7 +50,7 @@ fn invalid_id(num: i64) -> bool {
     false
 }
 
-fn invalid_id_part2(num: i64) -> bool {
+fn invalid_id_part2(num: u64) -> bool {
     let len = num_len(&num);
 
     if len < 2 {
@@ -76,7 +84,7 @@ fn invalid_id_part2(num: i64) -> bool {
     false
 }
 
-fn num_len(num: &i64) -> i32 {
+fn num_len(num: &u64) -> i32 {
     let mut copy = *num;
     let mut len = 1;
 
@@ -88,13 +96,13 @@ fn num_len(num: &i64) -> i32 {
     len
 }
 
-fn sub_int(num: &i64, len: i32, index: i32) -> i64 {
-    let moved_num = num / 10i64.pow((index * len) as u32);
+fn sub_int(num: &u64, len: i32, index: i32) -> u64 {
+    let moved_num = num / 10u64.pow((index * len) as u32);
 
     if num_len(&moved_num) == len {
         return moved_num;
     }
 
     // moved_num - moved_num / 10i64.pow(len as u32) * 10i64.pow(len as u32)
-    moved_num % 10i64.pow(len as u32)
+    moved_num % 10u64.pow(len as u32)
 }

@@ -1,6 +1,6 @@
-pub fn part1(puzzle: &str) -> i32 {
+pub fn part1(puzzle: &str) -> u64 {
     let mut sum = 0;
-    
+
     let mut width: i32 = 0;
     let mut height: i32 = 0;
 
@@ -31,7 +31,7 @@ pub fn part1(puzzle: &str) -> i32 {
     sum
 }
 
-pub fn part2(puzzle: &str) -> i32 {
+pub fn part2(puzzle: &str) -> u64 {
     let mut sum = 0;
 
     let mut width: i32 = 0;
